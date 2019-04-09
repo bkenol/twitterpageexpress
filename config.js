@@ -3,8 +3,8 @@
 // }
 
 module.exports = {
-	api_key: "lwIdXtgpbsyixSfjEe8EjTTaf",
-	api_secret_key: "F5vEqFNKZi8ecQdDfdoX0ZrSS4Cv1JgAMGk80hA2JBwNIvDKiP",
-	access_token: "1100482489821417473-9J4nKoyVLDIHOXuPfac2VxlyMlv9JO",
-	access_token_secret: "5oPFqXZfpdkBoDtKQ5wJ8npUP6C38UoxgQOfQZs3q5XaY"
+	api_key: "******************",
+	api_secret_key: "******************",
+	access_token: "******************",
+	access_token_secret: "******************",
 }
