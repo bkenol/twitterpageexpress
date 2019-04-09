@@ -1,5 +1,5 @@
 // module.exports = {
-// 	key: "141e7cf01698ff12325ee1ce822f1b70"
+// 	key: "******************"
 // }
 
 module.exports = {
