@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' type='text/css' href="style.css">
+    <style>
+      h1, h3, h5 {
+        color: white;
+      }
+
+      h5 {
+        background-color: #10206F;
+      }
+
+      h4 {
+        color: gray;
+      }
+
+      img {
+        width: 250px;
+        height: 250px;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #102254;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="container">
+      <fieldset>
+        <form action="/" method="POST">
+          <input name="twit_user" type="text" class="ghost-input" placeholder="Twitter Name (no @)" required>
+          <input type="submit" class="ghost-button" value="Find User">
+        </form>
+      </fieldset>
+      <p>
+        <div>
+          <h3>
+            <%= m %>
+          </h3>
+      </div>
+      <div></div>
+      <div>
+        <img src = <%= profile_image %>>
+      </div>
+       <div></div>
+       <div>
+        <h1>
+          <strong>
+            <%= name %>
+          </strong>
+       </h1>
+      </div>
+      <div>
+        <h4>
+          <%= location %>
+        </h4>
+      </div><div>
+        <h4>
+          <%= description %>
+        </h4>
+      </div>
+       <div>
+         <h3>Here's their most recent post: </h3>
+       </div>
+      <div>
+        <h5><%= new_post %></h5>
+      </div>
+      
+      </p>
+
+    </div>
+    
+  </body>
+</html>
