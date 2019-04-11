@@ -6,6 +6,8 @@ var Twit = require('twit');
 var auth = require('./config.js');
 const request = require('request');
 var nodemon = require('nodemon');
+const fs = require('fs');
+
 
 let consumer_key = auth.api_key;
 let consumer_secret = auth.api_secret_key;
@@ -31,17 +33,33 @@ var T = new Twit({
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res){
-    res.render('index', {
-    	m:"Enter a Twitter user's name!", 
-    	name: "", 
-    	new_post: "", 
-    	profile_image: "",
-    	description: "",
-    	location: ""})	
+	res.render('index', {
+    m:"Enter a Twitter user's name!", 
+    name: "", 
+    new_post: "", 
+    profile_image: "",
+    description: "",
+    location: ""})	
 });
 
 app.post('/', function(req, res){
-	twit_user = req.body.twit_user;
+	let twit_user = req.body.twit_user;
+	console.log(req.body.twit_user);
+	console.log(req.body.username);
+
+	let username = req.body.username;
+	let password = req.body.password;
+
+	var data = {
+		username: username,
+		password: password
+	}
+	console.log(username);
+	console.log(password);
+	// fs.writeFile('loginInfo.json', data, complete);
+	// function complete(err){
+	// 	res.redirect('/');
+	// }
 
 	T.get('users/lookup', { screen_name: twit_user}, function(err, data, response) {
 
@@ -72,6 +90,39 @@ app.post('/', function(req, res){
 	})
 
 })
+
+app.get('/signup', function(req, res){
+	res.render('login', {
+    	m:"Sign up for an account!",
+    	username: "" ,
+    	password: ""
+    })	
+})
+
+app.post('/signup', function(req, res){
+
+	username = req.body.username;
+	password = req.body.password;
+	console.log(username);
+
+	res.render('login', {
+    	m: "You have successfully created your account!",
+    	username: `Your username is:  ${username}`,
+    	password: `Your password is:  ${password}`
+    })
+
+
+	var data = {
+		username: username,
+		password: password
+	}
+	var json = JSON.stringify(data);
+
+	fs.writeFile('views/loginInfo.json', json, (err) => {
+		if (err) throw err;
+	})
+})
+
 
 app.listen(3000, function(){
     console.log('app is running on port 3000')
